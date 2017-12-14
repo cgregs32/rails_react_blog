@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Form, TextArea, Input } from 'semantic-ui-react';
-import { addBlog } from '../actions/addBlog';
+import { addBlog } from '../actions/blogs';
 import { incId } from '../actions/incId';
 
 class BlogForm extends React.Component {

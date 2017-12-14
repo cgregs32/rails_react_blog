@@ -1,13 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Blog from './Blog';
-import { List, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
+import {getBlogs} from '../actions/blogs'
 
-const BlogList = ({ blogs }) => (
-  <Grid columns='equal'>
-    {blogs.map(t => <Blog key={t.id} {...t} /> )}
-  </Grid>
-)
+class BlogList extends React.Component{
+  componentDidMount(){
+    this.props.dispatch(getBlogs())
+  }
+
+  render(){
+    return(
+      <Grid columns='equal'>
+        {this.props.blogs.map(t => <Blog key={t.id} {...t} /> )}
+      </Grid>
+    )
+  }
+}
 
 const mapStateToProps = (state) => {
   return { blogs: state.blogs }

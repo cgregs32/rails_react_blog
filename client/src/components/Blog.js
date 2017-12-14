@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteBlog } from '../actions/deleteBlog';
-import { editBlog } from '../actions/editBlog';
+import { deleteBlog, editBlog } from '../actions/blogs';
 import blogs from '../actions/addBlog';
 import {Card, Segment, Grid, Form, Button, TextArea, Input, List} from 'semantic-ui-react'
 
@@ -58,7 +57,7 @@ class Blog extends React.Component {
         <h1>{name}</h1>
         <h3>{body}</h3>
         <Button onClick={() => this.toggleForm()}>Edit</Button>
-        <Button negative onClick={()=> dispatch(deleteBlog(this.state.id)) }>Delete</Button>
+        <Button negative onClick={()=> dispatch(deleteBlog(this.props.id)) }>Delete</Button>
       </div>
 
     )
