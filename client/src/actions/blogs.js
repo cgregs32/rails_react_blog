@@ -22,8 +22,8 @@ export const addBlog = (blog) => {
   return (dispatch) => {
     axios.post(`/api/blogs/`, {blog})
       .then(res => {
-        dispatch({ type: 'ADD_BLOG', blog })
-        getBlogs()
+        dispatch({ type: 'ADD_BLOG', blog: res.data })
+        // getBlogs()
     })
   }
 }

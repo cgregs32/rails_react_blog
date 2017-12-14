@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteBlog, editBlog } from '../actions/blogs';
-import blogs from '../actions/addBlog';
-import {Card, Segment, Grid, Form, Button, TextArea, Input, List} from 'semantic-ui-react'
+import {Card, Segment, Grid, Form, Button, TextArea, Input } from 'semantic-ui-react'
 
 class Blog extends React.Component {
   state = { editing: false, name: this.props.name , body: this.props.body, }
@@ -18,9 +17,9 @@ class Blog extends React.Component {
     const { name, body } = this.state;
     const { id, dispatch } = this.props;
     const blog = { id, name, body };
-    dispatch(editBlog(blog))
     this.setState({ name: '', body: '' })
     this.toggleForm()
+    dispatch(editBlog(blog))
   }
 
   toggleForm = () => {
@@ -28,18 +27,18 @@ class Blog extends React.Component {
   }
 
   editBlog(){
-    const { id, name, body, dispatch } = this.props
+    const {  name, body } = this.state
       return (
           <Form onSubmit={this.handleSubmit}>
             <Form.Group>
-              <Form.Field name='name' value={this.state.name} control={Input}
+              <Form.Field name='name' value={name} control={Input}
               placeholder="Name" onChange={this.handleChange}
               />
             </Form.Group>
 
             <Form.Group>
 
-              <Form.Field name='body' value={this.state.body} control={TextArea}
+              <Form.Field name='body' value={body} control={TextArea}
               placeholder="Body" onChange={this.handleChange}
               />
             </Form.Group>
@@ -51,7 +50,7 @@ class Blog extends React.Component {
   }
 
   showBlog(){
-    const { id, name, body, dispatch } = this.props
+    const { name, body, dispatch } = this.props
     return(
       <div>
         <h1>{name}</h1>

@@ -18,7 +18,7 @@ class BlogForm extends React.Component {
     const { id, dispatch } = this.props;
     const blog = { id, name, body };
     dispatch(addBlog(blog))
-    dispatch(incId())
+    // dispatch(incId())
     this.setState({ name: '', body: '' })
   }
 
@@ -41,8 +41,8 @@ class BlogForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { id: state.nextId }
-}
+// const mapStateToProps = (state) => {
+//   // return { id: state.id }
+// }
 
-export default connect(mapStateToProps)(BlogForm);
+export default connect()(BlogForm);

@@ -6,7 +6,8 @@ const blogs = ( state = [], action ) => {
       return [action.blog, ...state];
     case 'DELETE_BLOG':
       const blogId = action.blog;
-      return state.filter(blog => blog.id !== blogId);
+      state.filter(blog => blog.id !== blogId);
+      return [...state]
     case 'EDIT_BLOG':
       const { id, name, body } = action.blog;
       return state.map(blog => {
